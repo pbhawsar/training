@@ -261,20 +261,17 @@ public boolean haveThree(int[] nums)
 // Given an array of ints, return true if every 2 that appears in the array is next to another 2.
 public boolean twoTwo(int[] nums)
 {
-	int count = 0;
-	for(int i = 0; i < nums.length; i++)
-	{
-		if(nums[i] == 2)
-			count++;
-		else
-		{
-			if(state == 1)
-				return false;
-			else
-				count = 0;
-		}
-	}
-	return (count != 1);
+final int length = nums.length;
+    for (int i = 0; i < length;){
+        int count = 0;      // Used to count following 2's
+        while(i < length && nums[i++] == 2){
+            count++;
+        }
+        if(count == 1){ // No adjacent 2's! Set doesn't work.
+            return false;
+        }
+    }
+    return true; // Didn't come across a lone 2   
 }
 
 // Return true if the group of N numbers at the start and end of the array are the same. For example, with {5, 6, 45, 99, 13, 5, 6}, the ends are the same for n=0 and n=2, and false for n=1 and n=3. You may assume that n is in the range 0..nums.length inclusive. 
